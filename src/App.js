@@ -5,38 +5,59 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-    const [expenses, setExpenses] = useState([]); // Initialize expenses as an empty array
+    const [expenses, setExpenses] = useState([]);
 
     // Fetch expenses from the backend
     const fetchExpenses = async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/expenses');
-            setExpenses(response.data); // Update state with fetched data
+            setExpenses(response.data);
         } catch (err) {
             console.error(err);
         }
     };
 
     useEffect(() => {
-        fetchExpenses(); // Fetch expenses on mount
+        fetchExpenses();
     }, []);
 
     const addExpense = async (newExpense) => {
         try {
             await axios.post('http://localhost:5000/api/expenses', newExpense);
-            fetchExpenses(); // Refresh the list after adding a new expense
+            fetchExpenses();
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const editExpense = async (expense) => {
+        const updatedExpense = { ...expense, description: "Updated description!" }; // Example update
+        try {
+            await axios.put(`http://localhost:5000/api/expenses/${expense._id}`, updatedExpense);
+            fetchExpenses(); // Refresh the list after editing
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const deleteExpense = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+            fetchExpenses(); // Refresh the list after deleting
         } catch (err) {
             console.error(err);
         }
     };
 
     return (
-        <div className='App'>
-            <div className='Container'>
-              <h1>Expense Tracker</h1>
-              <AddExpense onAddExpense={addExpense} />
-              <ExpenseList expenses={expenses} />
-            </div>
+        <div className="App">
+            <h1>Expense Tracker</h1>
+            <AddExpense onAddExpense={addExpense} />
+            <ExpenseList
+                expenses={expenses}
+                onEditExpense={editExpense}
+                onDeleteExpense={deleteExpense}
+            />
         </div>
     );
 }
