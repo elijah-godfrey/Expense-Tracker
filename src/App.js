@@ -30,15 +30,20 @@ function App() {
         }
     };
 
-    const editExpense = async (expense) => {
-        const updatedExpense = { ...expense, description: "Updated description!" }; // Example update
-        try {
-            await axios.put(`http://localhost:5000/api/expenses/${expense._id}`, updatedExpense);
-            fetchExpenses(); // Refresh the list after editing
-        } catch (err) {
-            console.error(err);
-        }
+    const editExpense = async (updatedExpense) => {
+      try {
+          await axios.put(`http://localhost:5000/api/expenses/${updatedExpense._id}`, updatedExpense);
+          setExpenses((prevExpenses) =>
+              prevExpenses.map((expense) =>
+                  expense._id === updatedExpense._id ? updatedExpense : expense
+              )
+          );
+      } catch (err) {
+          console.error('Error updating expense:', err.message);
+      }
     };
+  
+  
 
     const deleteExpense = async (id) => {
         try {
