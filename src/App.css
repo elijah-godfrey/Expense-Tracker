@@ -210,6 +210,11 @@
   border-bottom: 1px solid #dee2e6;
   font-size: 14px;
   color: #212529;
+  transition: background-colour 0.3s ease;
+}
+
+.expense-item:hover {
+  background-color: #f9f9f9;
 }
 
 .expense-item:last-child {
@@ -220,6 +225,12 @@
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.expense-item:hover .actions-buttons {
+  opacity: 1;
 }
 
 .actions-buttons button {
