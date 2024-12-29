@@ -103,7 +103,7 @@
 .add-expense-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Align all items on one line */
+  align-items: center;
   width: 100%;
 
 }
@@ -111,7 +111,7 @@
 .add-expense-title {
   font-size: 24px;
   font-weight: bold;
-  margin-right: 10px; /* Add spacing between title and form */
+  margin-right: 10px;
   white-space: nowrap;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .add-expense-form .react-select-container {
-  border-radius: 4px; /* Add rounded border */
+  border-radius: 4px;
   font-size: 14px;
   flex: 2;
 }
@@ -170,7 +170,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  flex: 1; /* Make the button wider */
+  flex: 1;
 }
 
 .add-expense-form button:hover {
@@ -178,20 +178,20 @@
 }
 
 .container {
-  width: 80vw; /* 80% of the viewport width */
-  margin: 0 auto; /* Center the container */
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .expenses-container,
 .add-expense-container {
-  width: 100%; /* Take full width of the parent container */
-  margin-bottom: 20px; /* Add spacing between form and list */
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .expenses-header,
 .expense-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr 1fr; /* Define column widths */
+  grid-template-columns: 7fr 7fr 7fr 7fr 4fr;
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
@@ -203,14 +203,14 @@
   font-weight: bold;
   color: #495057;
   border-radius: 8px 8px 0 0;
-  border-bottom: 1px solid #dee2e6; /* Separator between header and items */
+  border-bottom: 1px solid #dee2e6;
 }
 
 .expense-item {
   border-bottom: 1px solid #dee2e6;
   font-size: 14px;
   color: #212529;
-  transition: background-colour 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .expense-item:hover {
@@ -218,7 +218,7 @@
 }
 
 .expense-item:last-child {
-  border-bottom: none; /* Remove bottom border from last item */
+  border-bottom: none;
 }
 
 .actions-buttons {

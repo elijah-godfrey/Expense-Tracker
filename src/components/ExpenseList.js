@@ -34,7 +34,7 @@ const ExpenseList = ({ expenses = [], onEditExpense, onDeleteExpense }) => {
         <div>Category</div>
         <div>Amount</div>
         <div>Description</div>
-        <div>Actions</div>
+        <div></div>
       </div>
 
       {/* Expense Items */}
