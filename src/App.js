@@ -27,8 +27,9 @@ function App() {
 
     const addExpense = async (newExpense) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/expenses', newExpense);
-            setExpenses((prevExpenses) => [response.data, ...prevExpenses]); // Prepend new expense
+            await axios.post('http://localhost:5000/api/expenses', newExpense);
+            //setExpenses((prevExpenses) => [response.data, ...prevExpenses]); // Prepend new expense
+            fetchExpenses();
         } catch (err) {
             console.error('Error adding expense:', err);
             alert(err.response?.data?.error || 'Error adding expense.');
@@ -43,6 +44,7 @@ function App() {
                     expense._id === updatedExpense._id ? response.data : expense
                 )
             );
+            fetchExpenses();
         } catch (err) {
             console.error('Error updating expense:', err.message);
             alert(err.response?.data?.error || 'Error updating expense.');

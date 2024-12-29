@@ -30,6 +30,8 @@ const AddExpense = ({ onAddExpense, categories, setCategories }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        console.log('Submitting formData:', formData);
+
         if (formData.category && formData.description && formData.amount && formData.date) {
             onAddExpense(formData);
             setFormData({
