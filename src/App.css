@@ -99,3 +99,76 @@
   background-color: #007bff;
   color: white;
 }
+
+.add-expense-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Align all items on one line */
+  gap: 10px;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.add-expense-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px; /* Add spacing between title and form */
+}
+
+.add-expense-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-expense-form input {
+  padding: 8px;
+  border: 1px solid #bcc1ca;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.add-expense-form input::placeholder {
+  color: #bcc1ca;
+}
+
+.add-expense-form .react-select-container {
+  border-radius: 4px; /* Add rounded border */
+  font-size: 14px;
+  flex: 1;
+}
+
+.add-expense-form .react-select__control {
+  border: 1px solid #bcc1ca;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.add-expense-form .react-select__placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .add-expense-form .react-select__indicators {
+  padding: 0;
+} */
+
+.add-expense-form button {
+  background-color: #636AE8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1; /* Make the button wider */
+}
+
+.add-expense-form button:hover {
+  background-color: #4f58c7;
+}
+
