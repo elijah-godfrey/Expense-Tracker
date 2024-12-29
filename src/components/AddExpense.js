@@ -75,6 +75,7 @@ const AddExpense = ({ onAddExpense, categories, setCategories }) => {
                     type="date"
                     name="date"
                     value={formData.date}
+                    className="date-input"
                     onChange={handleChange}
                 />
                 <button type="submit">Add</button>

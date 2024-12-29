@@ -104,19 +104,20 @@
   display: flex;
   justify-content: center;
   align-items: center; /* Align all items on one line */
-  gap: 10px;
-  margin: 20px 0;
-  font-family: Arial, sans-serif;
+  width: 100%;
+
 }
 
 .add-expense-title {
   font-size: 24px;
   font-weight: bold;
   margin-right: 10px; /* Add spacing between title and form */
+  white-space: nowrap;
 }
 
 .add-expense-form {
   display: flex;
+  flex: 1;
   align-items: center;
   gap: 10px;
 }
@@ -129,6 +130,10 @@
   flex: 1;
 }
 
+.add-expense-form .description {
+  flex: 2;
+}
+
 .add-expense-form input::placeholder {
   color: #bcc1ca;
 }
@@ -136,7 +141,7 @@
 .add-expense-form .react-select-container {
   border-radius: 4px; /* Add rounded border */
   font-size: 14px;
-  flex: 1;
+  flex: 2;
 }
 
 .add-expense-form .react-select__control {
@@ -172,3 +177,71 @@
   background-color: #4f58c7;
 }
 
+.container {
+  width: 80vw; /* 80% of the viewport width */
+  margin: 0 auto; /* Center the container */
+}
+
+.expenses-container,
+.add-expense-container {
+  width: 100%; /* Take full width of the parent container */
+  margin-bottom: 20px; /* Add spacing between form and list */
+}
+
+.expenses-header,
+.expense-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr; /* Define column widths */
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.expenses-header {
+  background-color: #f8f9fa;
+  font-size: 16px;
+  font-weight: bold;
+  color: #495057;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #dee2e6; /* Separator between header and items */
+}
+
+.expense-item {
+  border-bottom: 1px solid #dee2e6;
+  font-size: 14px;
+  color: #212529;
+}
+
+.expense-item:last-child {
+  border-bottom: none; /* Remove bottom border from last item */
+}
+
+.actions-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.actions-buttons button {
+  background-color: #636AE8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actions-buttons button:hover {
+  background-color: #4f58c7;
+}
+
+.actions-buttons .delete-button {
+  background-color: #dc3545;
+}
+
+.actions-buttons .delete-button:hover {
+  background-color: #b02a37;
+}
