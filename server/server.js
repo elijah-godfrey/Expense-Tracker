@@ -63,32 +63,33 @@ app.get('/api/expenses/summary', async (req, res) => {
             return acc;
         }, {});
 
-        // Group expenses by year and month
-        const monthlyData = expenses.reduce((acc, expense) => {
+        // Group expenses by year, month, and day
+        const groupedData = expenses.reduce((acc, expense) => {
             const date = new Date(expense.date);
             const year = date.getFullYear();
-            const month = date.toLocaleString('default', { month: 'short' }); // eg. "Jan", "Feb"
+            const month = date.toLocaleString('default', { month: 'short' });
+            const day = date.getDate();
 
-            // If the year is not already in the accumulator, initialize it
+            // Initialize nested structure
             if (!acc[year]) {
                 acc[year] = {};
             }
-
-            // If the month is not already in the year, initialize it
             if (!acc[year][month]) {
-                acc[year][month] = 0;
+                acc[year][month] = {};
+            }
+            if (!acc[year][month][day]) {
+                acc[year][month][day] = 0;
             }
 
-            // Add the expense amount to the correct year and month
-            acc[year][month] += expense.amount;
-
+            // Add the expense to the correct year/month/day
+            acc[year][month][day] += expense.amount;
             return acc;
         }, {});
 
         const summary = {
             totalExpenses,
             categoryData,
-            monthlyData,
+            groupedData,
         };
 
         res.status(200).json(summary);

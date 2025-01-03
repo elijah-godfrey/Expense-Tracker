@@ -1,5 +1,7 @@
 // App.js
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
 import AddExpense from './components/AddExpense';
 import ExpenseList from './components/ExpenseList';
 import './App.css';
@@ -74,22 +76,35 @@ function App() {
     };
 
     return (
-        <div className="container">
-            <h1>Expense Tracker</h1>
-            <AddExpense
-                onAddExpense={addExpense}
-                categories={categories}
-                setCategories={setCategories}
-                onAddCategory={addCategory}
-            />
-            <ExpenseList
-                expenses={expenses}
-                categories={categories}
-                setCategories={setCategories}
-                onEditExpense={editExpense}
-                onDeleteExpense={deleteExpense}
-            />
-        </div>
+        <Router>
+            <Routes>
+                {/* 
+                Route path "/" => render the Dashboard 
+                You can also do "/dashboard" if you want a specific route 
+                */}
+                <Route path="/" element={<Dashboard />} />
+
+                {/* Additional routes for other pages go here... */}
+                {/* <Route path="/expenses" element={<ExpenseList />} /> */}
+            </Routes>
+        </Router>
+
+        // <div className="container">
+        //     <h1>Expense Tracker</h1>
+        //     <AddExpense
+        //         onAddExpense={addExpense}
+        //         categories={categories}
+        //         setCategories={setCategories}
+        //         onAddCategory={addCategory}
+        //     />
+        //     <ExpenseList
+        //         expenses={expenses}
+        //         categories={categories}
+        //         setCategories={setCategories}
+        //         onEditExpense={editExpense}
+        //         onDeleteExpense={deleteExpense}
+        //     />
+        // </div>
     );
 
 }
