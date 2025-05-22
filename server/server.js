@@ -55,7 +55,6 @@ app.get('/api/expenses/summary', async (req, res) => {
 
         // Group expenses by category
         const categoryData = expenses.reduce((acc, expense) => {
-            // Initializes key with value of 0 if not already in the accumulator object
             if (!acc[expense.category]) {
                 acc[expense.category] = 0;
             }
@@ -63,33 +62,26 @@ app.get('/api/expenses/summary', async (req, res) => {
             return acc;
         }, {});
 
-        // Group expenses by year, month, and day
-        const groupedData = expenses.reduce((acc, expense) => {
+        // Group expenses by year and month
+        const monthlyData = expenses.reduce((acc, expense) => {
             const date = new Date(expense.date);
             const year = date.getFullYear();
             const month = date.toLocaleString('default', { month: 'short' });
-            const day = date.getDate();
 
-            // Initialize nested structure
             if (!acc[year]) {
                 acc[year] = {};
             }
             if (!acc[year][month]) {
-                acc[year][month] = {};
+                acc[year][month] = 0;
             }
-            if (!acc[year][month][day]) {
-                acc[year][month][day] = 0;
-            }
-
-            // Add the expense to the correct year/month/day
-            acc[year][month][day] += expense.amount;
+            acc[year][month] += expense.amount;
             return acc;
         }, {});
 
         const summary = {
             totalExpenses,
             categoryData,
-            groupedData,
+            monthlyData,
         };
 
         res.status(200).json(summary);
@@ -121,5 +113,3 @@ const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-// mongodb+srv://egodf1:LIJp1aZi0Vlbb44n@expensetrackerdb.5sb2q.mongodb.net/?retryWrites=true&w=majority&appName=ExpenseTrackerDB

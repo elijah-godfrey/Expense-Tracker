@@ -1,16 +1,22 @@
 .dashboard-container {
-    margin-top: 40px;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
     background-color: #fafafa;
-    padding: 20px;
     border-radius: 8px;
   }
   
   .dashboard-container h4 {
     font-weight: 600;
+    margin-bottom: 24px;
   }
   
   /* Adjust bar chart spacing if needed */
   .dashboard-container .recharts-wrapper {
     margin-top: 20px;
+  }
+  
+  .dashboard-container .MuiPaper-root {
+    margin-bottom: 24px;
   }
   
